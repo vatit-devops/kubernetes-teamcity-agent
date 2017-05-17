@@ -1,5 +1,5 @@
 FROM openjdk:8-jre
-MAINTAINER Harry Lee
+MAINTAINER Harry Lee <harryl@vatit.com>
 
 VOLUME /data/teamcity_agent/conf
 ENV CONFIG_FILE /data/teamcity_agent/conf/buildAgent.propertie
