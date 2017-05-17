@@ -23,21 +23,20 @@ RUN useradd -m buildagent && \
     chmod +x /run-agent.sh /run-services.sh && sync
 RUN usermod -aG docker buildagent
 
-COPY services/run-docker.sh /services/run-docker.sh
-
 COPY dist/buildagent /opt/buildagent
 
 EXPOSE 9090
 
 # Install AWS-CLI
-RUN apt-get install -y python-pip && pip install --upgrade awscli
+RUN apt-get install -y python-pip && pip install --upgrade pip && pip install --upgrade awscli
 
 # Install Kubectl
 RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
-COPY kube_tc_build_enroll.sh /kube_tc_build_enroll.sh && chmod +x /kube_tc_build_enroll.sh
-COPY services/run-kubectl.sh /services/run-kubectl.sh
+RUN chmod +x ./kubectl
+RUN mv ./kubectl /usr/local/bin/kubectl
 
+COPY services /services
 CMD ["/run-services.sh"]
 
 
-# docker run -e SERVER_URL="http://52.51.194.183/" --privileged -e DOCKER_IN_DOCKER="start" -d halosan/teamcity-agent
+# docker run --name=teamcity-agent -e SERVER_URL="http://52.51.194.183/" --privileged -e DOCKER_IN_DOCKER="start" -e AWS_ACCESS_KEY_ID=<> -e AWS_SECRET_ACCESS_KEY=<> -d halosan/teamcity-agent
