@@ -50,6 +50,8 @@ Further, `kubectl` and `awscli` is installed in order to deploy to **Kubernetes*
     -e CLUSTER_NAME=<value> \
     -e USER_NAME=<value> \
     -e MASTER_LOAD_BALANCER=<value> \
+    -e S3_BUCKET=<value> \
+    -e S3_KEY=<value> \
     --privileged \
     -d teamcity-agent
     ```
