@@ -37,6 +37,3 @@ RUN mv ./kubectl /usr/local/bin/kubectl
 
 COPY services /services
 CMD ["/run-services.sh"]
-
-
-# docker run --name=teamcity-agent -e SERVER_URL="http://52.51.194.183/" --privileged -e DOCKER_IN_DOCKER="start" -e AWS_ACCESS_KEY_ID=<> -e AWS_SECRET_ACCESS_KEY=<> -d halosan/teamcity-agent
