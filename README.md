@@ -43,7 +43,7 @@ Further, `kubectl` and `awscli` is installed in order to deploy to **Kubernetes*
 4. To run and test the image on your local machine:
     ```bash
     docker run --name=teamcity-agent \
-    -e SERVER_URL="http://<value>/" \
+    -e SERVER_URL=<value> \
     -e DOCKER_IN_DOCKER="start" \
     -e AWS_ACCESS_KEY_ID=<value> \
     -e AWS_SECRET_ACCESS_KEY=<value> \
@@ -55,4 +55,14 @@ Further, `kubectl` and `awscli` is installed in order to deploy to **Kubernetes*
     --privileged \
     -d teamcity-agent
     ```
+
+    - `SERVER_URL` is the URL of the **TeamCity Server**, it needs to be in the form: _http://\<value\>/_
+    - `DOCKER_IN_DOCKER` specifies if _Docker in Docker_ is to be used
+    - `AWS_ACCESS_KEY_ID` is the **AWS_ACCESS_KEY_ID** for the _AWS IAM_ role of the user
+    - `AWS_SECRET_ACCESS_KEY` is the **AWS_SECRET_ACCESS_KEY** for the _AWS IAM_ role of the user
+    - `CLUSTER_NAME` is the **name** of the **Kubernetes** cluster
+    - `USER_NAME` is the **user** that is enrolled into **Kubernetes** through [RBAC](https://kubernetes.io/docs/admin/authorization/rbac/)
+    - `MASTER_LOAD_BALANCER` is the URL to the **Kubernetes** _master nodes_, it needs to be in the form: _http://\<value\>/_ 
+    - `S3_BUCKET` is the **AWS S3** bucket that stores the **Kubernetes** user credentials
+    - `S3_KEY` is the file name of the `.tar.gz` that store the **Kubernetes** user credentials
 

@@ -15,7 +15,7 @@ else
     USER_CSR=$USER_NAME.csr
     USER_CRT=$USER_NAME.cert
 
-    kubectl config set-cluster $CLUSTER_NAME-cluster --server=https://$MASTER_LOAD_BALANCER --certificate-authority=$CA_CRT
+    kubectl config set-cluster $CLUSTER_NAME-cluster --server=$MASTER_LOAD_BALANCER --certificate-authority=$CA_CRT
     kubectl config set-credentials $USER_NAME --certificate-authority=$CA_CRT --client-key=$USER_KEY --client-certificate=$USER_CRT
     kubectl config set-context $CLUSTER_NAME-context --cluster=$CLUSTER_NAME-cluster --user=$USER_NAME
     kubectl config use-context $CLUSTER_NAME-context
