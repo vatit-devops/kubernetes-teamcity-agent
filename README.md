@@ -43,10 +43,13 @@ Further, `kubectl` and `awscli` is installed in order to deploy to **Kubernetes*
 4. To run and test the image on your local machine:
     ```bash
     docker run --name=teamcity-agent \
-    -e SERVER_URL="http://<serverURL>/" \
+    -e SERVER_URL="http://<value>/" \
     -e DOCKER_IN_DOCKER="start" \
-    -e AWS_ACCESS_KEY_ID=<hidden> \
-    -e AWS_SECRET_ACCESS_KEY=<hidden> \
+    -e AWS_ACCESS_KEY_ID=<value> \
+    -e AWS_SECRET_ACCESS_KEY=<value> \
+    -e CLUSTER_NAME=<value> \
+    -e USER_NAME=<value> \
+    -e MASTER_LOAD_BALANCER=<value> \
     --privileged \
     -d teamcity-agent
     ```
